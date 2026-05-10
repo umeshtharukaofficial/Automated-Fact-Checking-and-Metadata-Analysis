@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Automated Fact-Checking & Metadata Analysis",
+  "version": "1.0",
+  "description": "Extract image metadata, perform reverse image search, and verify context.",
+  "permissions": [
+    "contextMenus",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Open Fact-Checker Info"
+  },
+  "icons": {
+    "48": "icon.png"
+  }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fact-Check Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #1e1e1e;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+    h1 {
+      color: #4CAF50;
+      border-bottom: 2px solid #333;
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+    .panel {
+      background: #2a2a2a;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 25px;
+    }
+    .panel h3 {
+      margin-top: 0;
+      color: #81C784;
+    }
+    .image-preview {
+      max-width: 100%;
+      height: auto;
+      max-height: 400px;
+      border-radius: 8px;
+      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #444;
+      padding: 8px 0;
+    }
+    .data-row:last-child {
+      border-bottom: none;
+    }
+    .label {
+      font-weight: bold;
+      color: #bbb;
+    }
+    .value {
+      color: #fff;
+      word-break: break-all;
+      max-width: 70%;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Fact-Check Analysis Dashboard</h1>
+    
+    <div class="panel">
+      <h3>Analyzed Image</h3>
+      <img id="target-image" class="image-preview" src="" alt="Waiting for image...">
+      
+      <div style="margin-top: 20px;">
+        <div class="data-row">
+          <span class="label">Source URL</span>
+          <span class="value" id="image-url">N/A</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="panel">
+      <h3>EXIF Metadata Analysis</h3>
+      <div id="exif-data" style="margin-top: 15px;">
+        <p style="color: #bbb;"><i>Extracting metadata...</i></p>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Reverse Image Search</h3>
+      <p style="color: #bbb; font-size: 14px;">Find the earliest occurrence or related context of this image across the web.</p>
+      <div id="reverse-search-links" style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+        <!-- Links will be populated here -->
+      </div>
+    </div>
+
+    <div class="panel" style="border: 1px solid #4CAF50;">
+      <h3>Phase 3: Fact-Checking & Intelligence</h3>
+      <p style="color: #bbb; font-size: 14px;">Enter context or text found in the image to verify claims using the Google Fact Check Tools API structure.</p>
+      
+      <div style="display: flex; gap: 10px; margin-top: 15px;">
+        <input type="text" id="claim-input" placeholder="e.g., 'Shark swimming in flooded highway'" style="flex-grow: 1; padding: 10px; border-radius: 5px; border: 1px solid #444; background: #1e1e1e; color: white; font-family: inherit;">
+        <button id="verify-btn" style="background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background 0.2s;">Verify Claim</button>
+      </div>
+
+      <div id="fact-check-results" style="margin-top: 20px; display: none;">
+        <!-- Fact check results will be populated here -->
+      </div>
+    </div>
+  </div>
+  <script src="exif.js"></script>
+  <script src="results.js"></script>
+</body>
+</html>
